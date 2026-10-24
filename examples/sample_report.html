@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ReconForge - example.com</title><style>
+:root{--bg:#f5f6fa;--card:#fff;--text:#1d2433;--muted:#667085;--line:#e4e7ee;--accent:#4f46e5;
+--high:#dc2626;--medium:#ea580c;--low:#ca8a04;--info:#2563eb;--ok:#16a34a}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1320;--card:#181d2e;--text:#e6e9f2;--muted:#8d97b0;--line:#2a3148;--accent:#818cf8}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+header h1{margin:0;font-size:26px}header p{margin:4px 0 0;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card b{display:block;font-size:26px}.card span{color:var(--muted);font-size:13px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+h2{margin:0 0 12px;font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.scroll{overflow-x:auto}.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
+.badge{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:600;color:#fff}
+.high{background:var(--high)}.medium{background:var(--medium)}.low{background:var(--low)}.info{background:var(--info)}
+.chip{display:inline-block;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);
+padding:0 8px;border-radius:6px;font-size:12px;margin:1px 3px 1px 0}
+.grade{font-weight:700;border-radius:6px;padding:0 7px;color:#fff}
+.gA,.gB{background:var(--ok)}.gC{background:var(--low)}.gD{background:var(--medium)}.gF{background:var(--high)}
+.muted{color:var(--muted)}.kv td:first-child{width:200px;color:var(--muted)}
+input#q{width:100%;padding:9px 12px;margin-bottom:10px;border:1px solid var(--line);border-radius:8px;
+background:var(--bg);color:var(--text);font-size:14px}
+footer{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+</style></head><body><div class="wrap">
+<header><h1>Recon report: example.com</h1>
+<p>Mode: SAMPLE DATA (synthetic, not a real scan) &middot; Generated 2026-01-01 10:00:00 &middot; Duration 12.3s &middot; ReconForge 1.0.0</p></header>
+<div class="cards"><div class='card'><b>3</b><span>Subdomains found</span></div><div class='card'><b>2</b><span>Resolving</span></div><div class='card'><b>2</b><span>Web hosts</span></div><div class='card'><b>2</b><span>High findings</span></div><div class='card'><b>3</b><span>Medium findings</span></div><div class='card'><b>3</b><span>Technologies</span></div></div>
+<section><h2>Findings</h2><div class='scroll'><table><tr><th>Severity</th><th>Finding</th><th>Target</th></tr><tr><td><span class='badge high'>HIGH</span></td><td><b>DNS zone transfer allowed (AXFR)</b><br><span class='muted'>Nameserver ns1.example.com returned 1 names to an unauthenticated request.</span></td><td class='mono'>ns1.example.com</td></tr><tr><td><span class='badge high'>HIGH</span></td><td><b>Possible subdomain takeover</b><br><span class='muted'>staging.example.com -&gt; x.github.io (GitHub Pages) does not resolve. Claim or remove the record.</span></td><td class='mono'>staging.example.com</td></tr><tr><td><span class='badge medium'>MEDIUM</span></td><td><b>No SPF record</b><br><span class='muted'>Anyone can forge email from this domain more easily.</span></td><td class='mono'>example.com</td></tr><tr><td><span class='badge medium'>MEDIUM</span></td><td><b>No DMARC record</b><br><span class='muted'>Spoofed email is not instructed to be rejected or quarantined.</span></td><td class='mono'>example.com</td></tr><tr><td><span class='badge medium'>MEDIUM</span></td><td><b>TLS certificate expires soon</b><br><span class='muted'>Expires in 5 days.</span></td><td class='mono'>example.com</td></tr><tr><td><span class='badge low'>LOW</span></td><td><b>Server version disclosure</b><br><span class='muted'>example.com (nginx/1.24.0)</span></td><td class='mono'></td></tr><tr><td><span class='badge low'>LOW</span></td><td><b>Missing security header: content-security-policy</b><br><span class='muted'>Absent on 2 of 2 web hosts.</span></td><td class='mono'></td></tr><tr><td><span class='badge info'>INFO</span></td><td><b>No CAA record</b><br><span class='muted'>Any certificate authority may issue certificates for this domain.</span></td><td class='mono'>example.com</td></tr><tr><td><span class='badge info'>INFO</span></td><td><b>Potentially sensitive hostname</b><br><span class='muted'>Name suggests a dev/admin/internal system - verify it should be internet-facing.</span></td><td class='mono'>staging.example.com</td></tr></table></div></section>
+<section><h2>Subdomains &amp; web hosts</h2><input id='q' placeholder='Filter hosts, IPs, technologies...'><div class='scroll'><table id='hosts'><thead><tr><th>Host</th><th>IP / CNAME</th><th>HTTP</th><th>Title</th><th>Technologies</th><th>Headers</th><th>Sources</th></tr></thead><tbody><tr><td class='mono'>example.com</td><td class='mono'>93.184.216.34</td><td>200</td><td>Example Domain</td><td><span class='chip'>nginx 1.24.0</span></td><td><span class='grade gF' title='Missing: content-security-policy'>F</span></td><td class='muted'>target</td></tr><tr><td class='mono'>staging.example.com</td><td class='mono'><span class='muted'>CNAME x.github.io</span></td><td></td><td></td><td></td><td></td><td class='muted'>crt.sh</td></tr><tr><td class='mono'>www.example.com</td><td class='mono'>93.184.216.34</td><td>200</td><td>Example Shop</td><td><span class='chip'>WordPress 6.4.2</span><span class='chip'>Cloudflare</span></td><td><span class='grade gD' title='Missing: content-security-policy, x-frame-options'>D</span></td><td class='muted'>crt.sh, bruteforce</td></tr></tbody></table></div></section>
+<section><h2>Technology summary</h2><span class='chip'>nginx &times; 1</span><span class='chip'>WordPress &times; 1</span><span class='chip'>Cloudflare &times; 1</span></section>
+<section><h2>WHOIS</h2><table class='kv'><tr><td>Registrar</td><td class='mono'>Example Registrar, Inc.</td></tr><tr><td>Created</td><td class='mono'>2015-03-01T10:00:00Z</td></tr><tr><td>Expires</td><td class='mono'>2999-03-01T10:00:00Z (355154 days)</td></tr><tr><td>Name servers</td><td class='mono'>ns1.example.com, ns2.example.com</td></tr><tr><td>Status</td><td class='mono'>clientTransferProhibited</td></tr><tr><td>Contact emails</td><td class='mono'>owner@example.com</td></tr></table></section>
+<section><h2>DNS records</h2><table class="kv"><tr><td><b>A</b></td><td class='mono'>93.184.216.34</td></tr><tr><td><b>NS</b></td><td class='mono'>ns1.example.com</td></tr></table></section>
+<section><h2>Email security</h2><table class='kv'><tr><td>SPF</td><td class='mono'>missing</td></tr><tr><td>DMARC</td><td class='mono'>missing</td></tr></table></section>
+<section><h2>Zone transfer (AXFR)</h2><table class="kv"><tr><td class='mono'>ns1.example.com</td><td><span class='badge high'>VULNERABLE</span></td></tr></table></section>
+<section><h2>Certificate transparency</h2><table class='kv'><tr><td>Certificates logged</td><td class='mono'>2</td></tr><tr><td>Wildcard certs</td><td class='mono'>1</td></tr><tr><td>First seen</td><td class='mono'>2023-01-01</td></tr><tr><td>Latest issued</td><td class='mono'>2024-01-01</td></tr><tr><td>Top issuers</td><td class='mono'>Let&#x27;s Encrypt (2)</td></tr></table></section>
+<footer>Generated by ReconForge. Use only against systems you own or are explicitly authorised to test.</footer>
+</div><script>
+document.getElementById('q').addEventListener('input',function(){
+ var t=this.value.toLowerCase();
+ document.querySelectorAll('#hosts tbody tr').forEach(function(r){
+  r.style.display=r.textContent.toLowerCase().indexOf(t)>-1?'':'none';});});
+</script></body></html>
