@@ -100,3 +100,12 @@ python -m unittest discover -s tests -v
 * Passive APIs are free tiers and may rate-limit or time out; the pipeline simply continues without them.
 * Fingerprinting is signature-based, so it can miss custom stacks and may be fooled by deliberate header changes.
 * It does not do port scanning or vulnerability exploitation: it is a reconnaissance tool.
+## Team & Responsibilities
+
+| # | Member | GitHub | Responsibility | Files |
+|---|--------|--------|----------------|-------|
+| 1 | Solan Rabira | [@SOLMANRAW](https://github.com/SOLMANRAW) | DNS | `dnsinfo.py`, `dnsutil.py` |
+| 2 | Lakumenza Wasu | [@angelwassu8-crypto](https://github.com/angelwassu8-crypto) | WHOIS | `whoisinfo.py` |
+| 3 | Suleyman Denbel | [@suleyman49 ](https://github.com/suleyman49 ) | Subdomain Enumeration | `subdomains.py`, `wordlist.txt` |
+| 4 | Farson Yusuf | [@far-son](https://github.com/far-son) | Fingerprinting & Analysis | `fingerprint.py`, `analysis.py` |
+| 5 | Sunamawit Endale | [@Sunendale](https://github.com/Sunendale) | Engine, CLI & Reports (team leader) | `engine.py`, `cli.py`, `report.py`, `tests/` |
